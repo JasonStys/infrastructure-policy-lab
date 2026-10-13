@@ -1,0 +1,44 @@
+# Jason Stys: least-privilege Python security-extended static analysis; no Actions artifact/cache uploads.
+# Jobs/functions: analyze. Variables: github ref identifies the reviewed commit; write access limited to findings.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: name — line 20
+# parameter: on — line 21
+# parameter: push — line 22
+# parameter: branches — line 23
+# parameter: pull_request — line 24
+# parameter: workflow_dispatch — line 25
+# parameter: permissions — line 26
+# parameter: contents — line 27
+# parameter: jobs — line 28
+# parameter: analyze — line 29
+# parameter: steps — line 35
+# parameter: uses — line 36
+# parameter: with — line 37
+# parameter: languages — line 41
+# parameter: queries — line 42
+# END CODE MAP
+name: CodeQL
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d # v4
+        with:
+          languages: python
+          queries: security-extended
+          build-mode: none
+      - uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d # v4

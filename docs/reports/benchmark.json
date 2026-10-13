@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-13",
+  "os": "Windows",
+  "python": "3.14.6",
+  "plans": 10000,
+  "seconds": 1.001089,
+  "plans_per_second": 9989.12,
+  "scope": "Cached validated synthetic plan policy only; excludes parsing, Terraform, provider download, OPA, export and AWS network."
+}

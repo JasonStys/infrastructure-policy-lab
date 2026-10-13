@@ -1,0 +1,115 @@
+# Jason Stys: four core OS/Python lanes plus actual mocked Terraform/OPA and security supply-chain gates.
+# Jobs/functions: quality, infrastructure, security. Variables: matrix selects OS/Python; no AWS credentials or uploads.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: name — line 32
+# parameter: on — line 33
+# parameter: push — line 34
+# parameter: branches — line 35
+# parameter: pull_request — line 36
+# parameter: workflow_dispatch — line 37
+# parameter: permissions — line 38
+# parameter: contents — line 39
+# parameter: concurrency — line 40
+# parameter: group — line 41
+# expression: github.ref — line 41
+# parameter: jobs — line 43
+# parameter: quality — line 44
+# expression: matrix.python — line 45
+# expression: matrix.os — line 45
+# parameter: strategy — line 48
+# parameter: matrix — line 50
+# parameter: include — line 51
+# parameter: steps — line 56
+# parameter: uses — line 57
+# parameter: with — line 58
+# parameter: run — line 63
+# parameter: shell — line 65
+# parameter: if — line 68
+# variable: GITHUB_STEP_SUMMARY — line 70
+# parameter: infrastructure — line 71
+# parameter: security — line 89
+# END CODE MAP
+name: Validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest, python: '3.12'}
+          - {os: ubuntu-latest, python: '3.14'}
+          - {os: windows-latest, python: '3.14'}
+          - {os: macos-15-intel, python: '3.14'}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - name: Quality, boundary/property tests and benchmark
+        shell: bash
+        run: bash scripts/validate.sh
+      - name: Results in logs and summary only
+        if: always()
+        shell: bash
+        run: printf '%s\n' 'Core evidence in this job log; no retained artifact/cache uploads. No live AWS operations.' >> "$GITHUB_STEP_SUMMARY"
+  infrastructure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - name: Checksum-verified official IaC toolchain
+        run: |
+          python -m scripts.bootstrap terraform
+          python -m scripts.bootstrap opa
+      - name: Native mocked plan assertions and real Rego gates
+        run: python -m scripts.infra_checks
+      - name: Infrastructure summary
+        run: printf '%s\n' '5 credential-free mocked Terraform cases, 10 OPA tests, 6 independent cross-engine fixtures and actual baseline mock-plan gate passed. No apply/destroy/AWS account calls, artifact/cache uploads or paid cloud resources.' >> "$GITHUB_STEP_SUMMARY"
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - name: Audit complete dependency graph
+        run: python -m pip_audit -r requirements-dev.lock --disable-pip --no-deps
+      - name: Hash-verified official scanners
+        run: |
+          python scripts/scanners.py gitleaks
+          python scripts/scanners.py trivy
+          python scripts/scanners.py actionlint
+      - name: History secrets, dependencies and workflow/shell gates
+        run: |
+          .tools/gitleaks git . --redact --no-banner
+          .tools/trivy fs --scanners vuln --severity HIGH,CRITICAL --exit-code 1 --skip-dirs .git,.tools,.venv,out,infra/.terraform .
+          .tools/actionlint
+          shellcheck scripts/validate.sh
+      - name: Security summary
+        run: printf '%s\n' 'Complete advisory audit, history secret scan, HIGH/CRITICAL dependency scan, actionlint and ShellCheck passed. IaC rules use explicit authored OPA gates in infrastructure job, not a complete compliance scanner. No suppressions or artifact/cache uploads.' >> "$GITHUB_STEP_SUMMARY"

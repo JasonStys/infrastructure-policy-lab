@@ -1,0 +1,33 @@
+[project]
+name = "infrastructure-policy-lab"
+version = "1.0.0"
+description = "Offline Terraform plan assurance and evidence by Jason Stys"
+authors = [{name = "Jason Stys"}]
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["assurance"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["assurance"]

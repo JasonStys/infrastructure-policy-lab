@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-13",
+  "tools": {
+    "terraform-windows": {"version":"1.16.5","url":"https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_windows_amd64.zip","sha256":"01700102b7291f95c0ab61394b55bfd5f57a12ac65632c2c1958691c8cf438ef"},
+    "terraform-linux": {"version":"1.16.5","url":"https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_linux_amd64.zip","sha256":"2bc2fcfff033265c9e02ca0351f01794eb122f62a9b2a49a3294b9e49eaab5e4"},
+    "opa-windows": {"version":"1.21.2","url":"https://github.com/open-policy-agent/opa/releases/download/v1.21.2/opa_windows_amd64.exe","sha256":"0089fa7ad8cdea7ff9e56ff86fa9202462afb63ef74506e2b547a24b4a987ccb"},
+    "opa-linux": {"version":"1.21.2","url":"https://github.com/open-policy-agent/opa/releases/download/v1.21.2/opa_linux_amd64_static","sha256":"830ab11f61ffec760b5e19db0d7ad02bf037e13f5ef4d665faeaf17632177527"},
+    "gitleaks": {"version":"8.30.1","url":"https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz","sha256":"551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"},
+    "trivy": {"version":"0.75.0","url":"https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_Linux-64bit.tar.gz","sha256":"c6e65abddb348e25f10549df887045629cf28cc72453cd1c63acb717316b3f3f"},
+    "actionlint": {"version":"1.7.12","url":"https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz","sha256":"8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"}
+  }
+}
