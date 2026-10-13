@@ -1,29 +1,31 @@
 """Documentation map and offline tool archive integrity regression tests. Created by Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: test_python_map — line 41
-# variable: source — line 43
-# variable: generated — line 44
-# variable: name — line 46
-# definition: test_other_maps — line 59
-# parameter: source — line 59
-# parameter: suffix — line 59
-# variable: generated — line 61
-# definition: test_raw_tool_digest — line 66
-# variable: source — line 68
-# definition: test_zip_extract_only_fixed_member — line 74
-# variable: stream — line 76
-# variable: archive — line 77
-# variable: source — line 80
-# definition: test_zip_symlink — line 86
-# variable: stream — line 88
-# variable: archive — line 89
-# variable: member — line 90
-# variable: source — line 93
-# definition: test_mock_only_operations — line 98
-# variable: source — line 100
-# variable: workflow — line 103
-# definition: test_preservation_guards — line 108
-# variable: source — line 110
+# definition: test_python_map — line 43
+# variable: source — line 45
+# variable: generated — line 46
+# variable: name — line 48
+# definition: test_other_maps — line 61
+# parameter: source — line 61
+# parameter: suffix — line 61
+# variable: generated — line 63
+# definition: test_raw_tool_digest — line 68
+# variable: source — line 70
+# definition: test_zip_extract_only_fixed_member — line 76
+# variable: stream — line 78
+# variable: archive — line 79
+# variable: source — line 82
+# definition: test_zip_symlink — line 88
+# variable: stream — line 90
+# variable: archive — line 91
+# variable: member — line 92
+# variable: source — line 95
+# definition: test_mock_only_operations — line 100
+# variable: source — line 102
+# variable: workflow — line 105
+# definition: test_preservation_guards — line 110
+# variable: source — line 112
+# definition: test_provider_lock_multiple_platforms — line 117
+# variable: source — line 119
 # END CODE MAP
 
 import hashlib
@@ -110,3 +112,12 @@ def test_preservation_guards() -> None:
     source = (ROOT / "infra/main.tf").read_text()
     assert len(re.findall(r"prevent_destroy\s*=\s*true", source)) == 2
     assert re.search(r"force_destroy\s*=\s*false", source)
+
+
+def test_provider_lock_multiple_platforms() -> None:
+    """Windows/Linux need multiple unpacked hashes plus vendor archive checksums; CI stays read-only."""
+    source = (ROOT / "infra/.terraform.lock.hcl").read_text()
+    assert len(re.findall(r'"h1:[^"\n]+"', source)) >= 2
+    assert len(re.findall(r'"zh:[a-f0-9]{64}"', source)) >= 2
+    assert 'version     = "6.68.0"' in source
+    assert '"-lockfile=readonly"' in (ROOT / "scripts/infra_checks.py").read_text()

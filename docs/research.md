@@ -13,6 +13,7 @@ Reviewed 2026-10-13 by Jason Stys. Sources inform selected checks, not certifica
 | [AWS S3 bucket policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html) | Scope explicit HTTP deny to bucket and objects; recognize aws:SecureTransport false without claiming minimum TLS version |
 | [AWS KMS key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) | Separate encryption configuration from real IAM/key authorization; example account delegation needs review |
 | [Terraform lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) | prevent_destroy is a source guard, not backup/restore or a blanket guarantee after source removal |
+| [Terraform provider locking](https://developer.hashicorp.com/terraform/cli/commands/providers/lock) | Pre-populate signed origin-package checksums for Linux/Windows; keep hosted initialization read-only |
 | [AWS Pricing Calculator](https://calculator.aws/) | Use supplied illustrative rates/exclusions; require current real estimation before spending |
 | [GitHub Actions security guidance](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions) | Least privilege, immutable action SHAs, no persisted checkout credentials or privileged untrusted PR execution |
 
