@@ -2,7 +2,7 @@
 
 Measured 2026-10-13 by Jason Stys. Local Windows / CPython 3.14.6. This is synthetic/offline software verification and mocked IaC testing, not independent security audit or real AWS deployment verification.
 
-Measured functional source: `d71fb97b5697c076fbc0a390fbbd895c245b5496`. A subsequent report-only commit does not change that tested functional source and must independently pass both workflows before handoff.
+Measured final functional source: `934c3763e304f94f2e7883afab725161d8d74f40`. The subsequent report-only commit does not change that tested functional source and must independently pass both workflows before handoff.
 
 ## Local validation
 
@@ -18,7 +18,9 @@ The two bounded properties use Hypothesis default 100 examples each, not exhaust
 
 Initial source `32bbfd84de8e3d34cefb7b0f7d12396ce88e0b5c`: [Validate 38467044088](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38467044088) passed all four core OS/Python lanes and security, but infrastructure failed at cached Linux AWS provider checksum validation. The Windows-generated lock needed a Linux unpacked-package h1 hash for read-only validation. [CodeQL 38467044014](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38467044014) passed. Both signed origin-registry packages were verified and their hashes committed; no checksum/signature gate or read-only lock setting was disabled. A regression guard and maintenance guidance were added; the failure remains visible.
 
-Final functional source `d71fb97b5697c076fbc0a390fbbd895c245b5496`: [Validate 38467733156](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38467733156) passed **all six jobs**; [CodeQL 38467733204](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38467733204) passed. Exact per-job logs showed:
+The integrity correction `d71fb97b5697c076fbc0a390fbbd895c245b5496` passed [Validate 38467733156](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38467733156) and [CodeQL 38467733204](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38467733204). A final review cached the unknown-key flag once, removing repeated key-list scans for unmatched references without changing policy decisions. An intermediate documentation run was superseded/canceled by that source follow-up; it remains visible, not presented as a passing run.
+
+Final functional source `934c3763e304f94f2e7883afab725161d8d74f40`: [Validate 38468701373](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38468701373) passed **all six jobs**; [CodeQL 38468701222](https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/38468701222) passed. Exact per-job logs showed:
 
 | Hosted lane/gate | Observed result |
 | --- | --- |
@@ -34,7 +36,7 @@ Ruff/types/exact maps/file-guide/benchmarks also ran in all four core lanes. OPA
 
 ## Performance, storage and limits
 
-The saved [benchmark](benchmark.json) measured 10,000 cached plan evaluations in 1.001089 seconds (9,989.12 plans/second) on local Windows/Python 3.14.6. This is a microbenchmark only, not a deployment latency, parser throughput, real OPA/cloud capacity or cost guarantee. CI repeats it without a hardware-dependent pass threshold.
+The saved [benchmark](benchmark.json), from initial local validation, measured 10,000 cached plan evaluations in 1.001089 seconds (9,989.12 plans/second) on local Windows/Python 3.14.6. This is a microbenchmark only, not a before/after optimization comparison, deployment latency, parser throughput, real OPA/cloud capacity or cost guarantee. Final CI repeats the same workload without a hardware-dependent pass threshold.
 
 Read-only Actions account inventory at 2026-10-13T21:07:45Z: 578,457,513 artifact bytes, 7,677,170,223 cache bytes under its separate allowance. GitHub's refreshed billing meter verified 0.5 GB / 0.5 GB included Actions storage (100%). These measurements differ; byte counts are not billing percentages. This repository's API returned **0 artifacts / 0 bytes and 0 caches / 0 bytes**. All results are in logs/job summaries, not retained artifacts. Other repositories' activity can change the account totals. No existing results were deleted; fresh approval is required for cleanup.
 
