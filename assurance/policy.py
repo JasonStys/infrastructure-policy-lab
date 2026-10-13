@@ -1,70 +1,72 @@
 """Deterministic selected-control plan gate; unknown/deletion/unsupported resources cannot pass. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: CHECKS — line 79
-# variable: key — line 89
-# definition: tls_deny — line 122
-# parameter: bucket — line 122
-# parameter: value — line 122
-# variable: document — line 127
-# variable: statements — line 128
-# variable: required — line 131
-# variable: s — line 140
-# definition: evidence — line 146
-# parameter: plan — line 146
-# variable: checks — line 148
-# variable: key_values — line 149
-# variable: r — line 149
-# variable: key — line 150
-# variable: keys — line 150
-# variable: resource — line 151
-# variable: _ — line 170
-# variable: control — line 170
-# variable: path — line 170
-# variable: value — line 171
+# variable: CHECKS — line 81
+# variable: key — line 91
+# definition: tls_deny — line 124
+# parameter: bucket — line 124
+# parameter: value — line 124
+# variable: document — line 129
+# variable: statements — line 130
+# variable: required — line 133
+# variable: s — line 142
+# definition: evidence — line 148
+# parameter: plan — line 148
+# variable: checks — line 150
+# variable: key_values — line 151
+# variable: r — line 151
+# variable: key — line 152
+# variable: keys — line 152
+# variable: key — line 153
+# variable: keys_uncertain — line 153
+# variable: resource — line 154
+# variable: _ — line 173
+# variable: control — line 173
+# variable: path — line 173
 # variable: value — line 174
-# variable: value — line 176
-# variable: value — line 178
-# variable: bucket — line 180
+# variable: value — line 177
+# variable: value — line 179
 # variable: value — line 181
-# variable: address — line 190
-# definition: Finding — line 198
-# variable: address — line 201
-# variable: control — line 202
-# variable: status — line 203
-# variable: message — line 204
-# definition: assess — line 207
-# parameter: plan — line 207
-# variable: findings — line 209
-# variable: expected_values — line 210
-# variable: _ — line 211
-# variable: checks — line 211
-# variable: control — line 211
-# variable: expected — line 211
-# variable: check — line 213
+# variable: bucket — line 183
+# variable: value — line 184
+# variable: address — line 193
+# definition: Finding — line 201
+# variable: address — line 204
+# variable: control — line 205
+# variable: status — line 206
+# variable: message — line 207
+# definition: assess — line 210
+# parameter: plan — line 210
+# variable: findings — line 212
+# variable: expected_values — line 213
+# variable: _ — line 214
+# variable: checks — line 214
 # variable: control — line 214
-# variable: value — line 214
-# variable: status — line 216
-# variable: status — line 218
-# variable: expected — line 220
+# variable: expected — line 214
+# variable: check — line 216
+# variable: control — line 217
+# variable: value — line 217
+# variable: status — line 219
 # variable: status — line 221
-# parameter: row — line 232
-# variable: f — line 232
-# variable: rows — line 232
-# variable: counts — line 233
-# variable: r — line 234
-# variable: status — line 235
-# variable: row — line 241
-# definition: compare — line 248
-# parameter: after — line 248
-# parameter: before — line 248
-# definition: index — line 251
-# parameter: report — line 251
-# variable: result — line 255
-# variable: row — line 256
-# variable: key — line 264
-# variable: new — line 270
-# variable: old — line 270
-# variable: key — line 275
+# variable: expected — line 223
+# variable: status — line 224
+# parameter: row — line 235
+# variable: f — line 235
+# variable: rows — line 235
+# variable: counts — line 236
+# variable: r — line 237
+# variable: status — line 238
+# variable: row — line 244
+# definition: compare — line 251
+# parameter: after — line 251
+# parameter: before — line 251
+# definition: index — line 254
+# parameter: report — line 254
+# variable: result — line 258
+# variable: row — line 259
+# variable: key — line 267
+# variable: new — line 273
+# variable: old — line 273
+# variable: key — line 278
 # END CODE MAP
 
 from __future__ import annotations
@@ -148,6 +150,7 @@ def evidence(plan: Plan) -> dict[str, Any]:
     checks = []
     key_values = [field(r, ("arn",)) for r in plan.resources if r.kind == "aws_kms_key"]
     keys = {key for key in key_values if isinstance(key, str)}
+    keys_uncertain = any(key is None for key in key_values)
     for resource in plan.resources:
         if "delete" in resource.actions:
             checks.append(
@@ -175,7 +178,7 @@ def evidence(plan: Plan) -> dict[str, Any]:
                 elif value in keys:
                     value = True
                 else:
-                    value = None if None in key_values else False
+                    value = None if keys_uncertain else False
             if control == "s3-tls-deny" and value is not None:
                 bucket = field(resource, ("bucket",))
                 value = tls_deny(value, bucket) if bucket is not None else None
