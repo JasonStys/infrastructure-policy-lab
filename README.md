@@ -15,6 +15,7 @@ This defensive DevOps/cloud-security portfolio project asks **what a proposed in
 - Deletion/replacement and reported out-of-band drift require REVIEW; unsupported resource types block the gate. Decisions do not automatically approve deployment.
 - Independent Rego/OPA gate with ten tests, plus cross-engine agreement on six independently labeled scenarios and the actual emitted Terraform mock plan.
 - Plan-assessment comparison, exact-decimal illustrative cost scenarios, new-directory-only JSON and inert HTML reports. No raw configuration values or credentials appear in findings.
+- [Digest-bound change review](docs/change-review.md): per-resource create/update/delete/replacement worklists, reasoned reviewer/ticket receipts and explicit unreviewed work. Receipts preserve the original policy gate and cannot approve blocked changes or authorize deployment.
 - Dependency-free Python runtime; pinned/hashes-verified Terraform, OPA, AWS provider and development/scanner tools. Cross-platform tests, security-extended CodeQL, reproducible benchmark and comprehensive docs.
 
 ## Safe five-minute demo
@@ -88,10 +89,13 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [assurance/plan.py](assurance/plan.py) | Validate Terraform plan changes and retain only selected non-sensitive evidence. Jason Stys. |
 | [assurance/policy.py](assurance/policy.py) | Deterministic selected-control plan gate; unknown/deletion/unsupported resources cannot pass. Jason Stys. |
 | [assurance/report.py](assurance/report.py) | Escaped scriptless offline assurance reports with no raw plan values. Created by Jason Stys. |
+| [assurance/review.py](assurance/review.py) | Digest-bound resource change worklists and asserted reviewer receipts. Created by Jason Stys. |
 | [docs/architecture.md](docs/architecture.md) | ADR-001: Offline plan assurance with actual provider-mocked IaC tests. |
+| [docs/change-review.md](docs/change-review.md) | Digest-bound infrastructure change review. |
 | [docs/contracts.md](docs/contracts.md) | Plan, policy, cost and report contracts. |
 | [docs/development.md](docs/development.md) | Coding, documentation and dependency maintenance. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured offline gate throughput with environment/scope caveats. |
+| [docs/reports/change-review-2026-11-09.md](docs/reports/change-review-2026-11-09.md) | Change review workflow validation — 2026-11-09. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Inert synthetic plan report, never real cloud evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Synthetic selected-control assessment, counts and semantic digest. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
@@ -133,6 +137,7 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Documentation map and offline tool archive integrity regression tests. Created by Jason Stys. |
 | [tests/test\_plan.py](tests/test_plan.py) | Strict plan input, sensitive masks, bounds and malformed-data negative tests. Created by Jason Stys. |
 | [tests/test\_policy.py](tests/test_policy.py) | Independent gate decisions, unknown propagation, KMS/TLS scope and property oracles. Jason Stys. |
+| [tests/test\_review.py](tests/test_review.py) | Independent change-shape, stale-review, redaction and user workflow tests. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Terraform/OPA/scanner URLs, versions and SHA-256 pins. |
 
 <!-- END FILE GUIDE -->
