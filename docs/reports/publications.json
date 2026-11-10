@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "project": "infrastructure-policy-lab",
+  "author": "Jason Stys",
+  "editionDate": "2026-11-09",
+  "sourceBaseline": "5db2c9db4fd02cdff61eb4c98ea489ae2d9b48e6",
+  "sourceUrl": "https://github.com/JasonStys/infrastructure-policy-lab/tree/5db2c9db4fd02cdff61eb4c98ea489ae2d9b48e6",
+  "functionalEvidenceBaseline": "5db2c9db4fd02cdff61eb4c98ea489ae2d9b48e6",
+  "evidenceObservedAt": "2026-11-10T05:25:40.628667+00:00",
+  "workflowEvidence": [
+    {
+      "conclusion": "success",
+      "databaseId": 42699831352,
+      "event": "push",
+      "headSha": "5db2c9db4fd02cdff61eb4c98ea489ae2d9b48e6",
+      "name": "Validate",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/42699831352"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42699831409,
+      "event": "push",
+      "headSha": "5db2c9db4fd02cdff61eb4c98ea489ae2d9b48e6",
+      "name": "CodeQL",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/infrastructure-policy-lab/actions/runs/42699831409"
+    }
+  ],
+  "summary": "Build resource drift/replacement worklists and semantic-plan-bound reasoned review receipts.",
+  "rationale": "Makes proposed infrastructure changes easier to assess without letting review annotations override policy gates.",
+  "limitations": [
+    "Reviewer/ticket context is asserted rather than authenticated.",
+    "Review receipts cannot authorize deployment or override fail, unknown or review-needed policy states.",
+    "Plan-bound review is not automatic infrastructure provisioning or a complete security/compliance certification."
+  ],
+  "documents": [
+    {
+      "filename": "project-guide.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 44548,
+      "sha256": "c57afa12b4174453f9fa3eb15b37e985e1a392904ddb77dcea2469dd800c4f58",
+      "sourceBaseline": "5db2c9db4fd02cdff61eb4c98ea489ae2d9b48e6",
+      "visualReview": {
+        "approved": true,
+        "method": "Every rendered page individually viewed at readable original resolution",
+        "pageCount": 5,
+        "renderedPageSha256": {
+          "page-1.png": "93fc308e3ed8e3cff454a0e213521f875857c8aeaa175a8d3481181af29d85bc",
+          "page-2.png": "5014eda1ef1454da056f14fb0de64df02a4d165dbde09d54156a88687655f114",
+          "page-3.png": "6c026757547a1ac927a01f5dfd4c7d60990345085ff22a5f407013c7e135847a",
+          "page-4.png": "66a01459f61393636cefbc0d035e0a6d59c563a306eec96ba8d19da5d72e7c17",
+          "page-5.png": "26a0245aaa49f9ab8714b9c15eaac01383a93d683536fb6ccac862624a618217"
+        }
+      }
+    }
+  ],
+  "scope": "Reviewed documentation editions of the cited source. Checksums identify bytes, not authorship. Historical measurements retain their own dates; integration CI must be checked separately."
+}

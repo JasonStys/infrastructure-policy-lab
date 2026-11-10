@@ -94,11 +94,15 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [docs/change-review.md](docs/change-review.md) | Digest-bound infrastructure change review. |
 | [docs/contracts.md](docs/contracts.md) | Plan, policy, cost and report contracts. |
 | [docs/development.md](docs/development.md) | Coding, documentation and dependency maintenance. |
+| [docs/handbook.md](docs/handbook.md) | Infrastructure Policy Lab handbook. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured offline gate throughput with environment/scope caveats. |
 | [docs/reports/change-review-2026-11-09.md](docs/reports/change-review-2026-11-09.md) | Change review workflow validation — 2026-11-09. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Inert synthetic plan report, never real cloud evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Synthetic selected-control assessment, counts and semantic digest. |
+| [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide with source revision and dated validation scope. |
+| [docs/reports/publications.json](docs/reports/publications.json) | Exact reviewed Office file identities, immutable source baseline and workflow observations. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation results. |
 | [docs/research.md](docs/research.md) | Primary-source research and design choices. |
@@ -141,3 +145,9 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [tools.lock.json](tools.lock.json) | Official Terraform/OPA/scanner URLs, versions and SHA-256 pins. |
 
 <!-- END FILE GUIDE -->
+
+## Documentation editions
+
+Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
+
+[Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
