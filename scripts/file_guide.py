@@ -4,22 +4,22 @@
 # variable: BEGIN — line 33
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 49
-# parameter: path — line 49
-# variable: content — line 59
-# variable: line — line 65
-# definition: main — line 69
-# variable: parser — line 71
-# variable: args — line 73
-# variable: files — line 74
-# variable: rows — line 82
-# variable: path — line 83
-# variable: label — line 84
-# variable: destination — line 86
-# variable: original — line 87
-# variable: first — line 88
-# variable: last — line 88
-# variable: expected — line 89
+# definition: description — line 51
+# parameter: path — line 51
+# variable: content — line 61
+# variable: line — line 67
+# definition: main — line 71
+# variable: parser — line 73
+# variable: args — line 75
+# variable: files — line 76
+# variable: rows — line 84
+# variable: path — line 85
+# variable: label — line 86
+# variable: destination — line 88
+# variable: original — line 89
+# variable: first — line 90
+# variable: last — line 90
+# variable: expected — line 91
 # END CODE MAP
 
 from __future__ import annotations
@@ -32,6 +32,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/project-guide.docx": "Reviewed Word project guide with source revision and dated validation scope.",
+    "docs/reports/publications.json": "Exact reviewed Office file identities, immutable source baseline and workflow observations.",
     ".gitattributes": "Portable LF text handling.",
     ".gitignore": "Keeps tools, private plans/state/credentials and generated outputs out of Git.",
     "LICENSE": "MIT terms for authored code, not third-party tool licenses.",
