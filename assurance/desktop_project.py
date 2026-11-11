@@ -85,7 +85,7 @@ from .report import export
 
 ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
 PRODUCT, PROFILE = "infrastructure-policy-lab", "InfrastructurePolicyLab"
-TITLE, VERSION = "Infrastructure Policy Workbench", "1.1.0"
+TITLE, VERSION = "Infrastructure Policy Workbench", "1.1.1"
 COLUMNS = ("Resource / item", "Control / change", "Evidence / review reason", "State / amount")
 RESOURCES = tuple(
     f"examples/{name}.json"
