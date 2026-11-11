@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "repository": "infrastructure-policy-lab",
+  "runtimeVersion": "1.1.0",
+  "runtimeSource": "1d1e1085da02b1e9016c3e60b2a00555d03faef8",
+  "createdAt": "2026-11-11T04:00:16.524Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.0.docx",
+  "sha256": "c1c88435d9ba835c844db2b53ad76fb252af403b2d2b5fcaef506c45848e1937",
+  "screenshots": [
+    {
+      "file": "destructive-change-review.png",
+      "sha256": "34396aa58f5e4db2064357dbfbd9a0da9f45bf1db3d0756bbea88c7482eaf797",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed app selects an aws_vpc.sample delete-before-create replacement and shows its original REVIEW evidence. The selected-control gate remains BLOCKED with 16 PASS and 1 REVIEW."
+    },
+    {
+      "file": "reasoned-resource-receipt.png",
+      "sha256": "86a2ff258b962e61caaf5648f905a6aa8e1234cf3c78c81a4dadb63b677828f2",
+      "width": 1276,
+      "height": 899,
+      "caption": "The actual installed review retains a reasoned resource disposition bound to the current semantic plan and worklist. The annotation does not turn the blocked policy result into approval."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "assurance/desktop_project.py",
+      "first": 189,
+      "last": 211,
+      "sha256": "7298d95494c8c1325bcbfbf4d483ed6b533fab851ea93691ff1cdcfac5518966",
+      "url": "https://github.com/JasonStys/infrastructure-policy-lab/blob/1d1e1085da02b1e9016c3e60b2a00555d03faef8/assurance/desktop_project.py#L189"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Release and runtime",
+      "observed": "All 5 downloaded assets matched provider/sidecar hashes. Actual frozen CPython 3.14.10 and Tcl/Tk 9.0.4 matched their recorded runtime identities.",
+      "result": "Passed"
+    },
+    {
+      "name": "Real user workflow",
+      "observed": "Four exact bundles survived a second launch. Actual assessment, replacement review, plan comparison, exact-decimal cost and malformed-receipt retention passed; a reasoned receipt left the BLOCKED gate unchanged.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and security",
+      "observed": "All current main workflows passed. Exact-source CodeQL analyses processed with zero open main alerts before publication.",
+      "result": "Passed"
+    },
+    {
+      "name": "Desktop delivery",
+      "observed": "New individual Desktop and Start-menu links target the installed accepted EXE. Shortcut metadata was read back; normal shortcut activation was not independently exercised.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": {
+    "approved": true,
+    "scope": "all four pages individually inspected",
+    "ooxmlSchema": "passed",
+    "pages": [
+      {
+        "file": "page-1.png",
+        "sha256": "e0ddc3da5f458b927d95feec9a6856a43c278f310228b4a7702e9b686a858a14"
+      },
+      {
+        "file": "page-2.png",
+        "sha256": "b44c5a9ff7daad0f122d472cfcb6eef5339667181b83cfaa16df5b7ecf2ce7a5"
+      },
+      {
+        "file": "page-3.png",
+        "sha256": "a60463cf9e429acf50a5ed56473db44e352275fa9c0bcebe39c53d66cc62cc65"
+      },
+      {
+        "file": "page-4.png",
+        "sha256": "f88d4cb1792d06be484aa6c29b1bb8f907a5439f622d49e7944ab63afec2ccc4"
+      }
+    ],
+    "reviewedUtc": "2026-11-11T04:31:27.709499+00:00"
+  }
+}

@@ -111,14 +111,19 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [docs/reports/demo.html](docs/reports/demo.html) | Inert synthetic plan report, never real cloud evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Synthetic selected-control assessment, counts and semantic digest. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/installed-windows-2026-11-10.md](docs/reports/installed-windows-2026-11-10.md) | Installed Windows application validation 10 November 2026. |
 | [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native application validation — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide with source revision and dated validation scope. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact reviewed Office file identities, immutable source baseline and workflow observations. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation results. |
+| [docs/reports/windows-application-guide-1.1.0.docx](docs/reports/windows-application-guide-1.1.0.docx) | Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits. |
+| [docs/reports/windows-application-guide-1.1.0.json](docs/reports/windows-application-guide-1.1.0.json) | Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results. |
 | [docs/research.md](docs/research.md) | Primary-source research and design choices. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and safe change/teardown procedure. |
+| [docs/screenshots/installed-1.1.0/destructive-change-review.png](docs/screenshots/installed-1.1.0/destructive-change-review.png) | Actual installed application synthetic-profile screenshot: Destructive resource change worklist. |
+| [docs/screenshots/installed-1.1.0/reasoned-resource-receipt.png](docs/screenshots/installed-1.1.0/reasoned-resource-receipt.png) | Actual installed application synthetic-profile screenshot: Plan bound resource review receipt. |
 | [docs/security.md](docs/security.md) | Threat model, privacy and known assurance gaps. |
 | [docs/testing.md](docs/testing.md) | Risk-based test strategy and reproducibility. |
 | [examples/cost.json](examples/cost.json) | Fictional cost plan/scenario; not cloud state, credentials or current AWS pricing. |
@@ -172,3 +177,18 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
 
 [Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
+
+## Current Windows application guide
+
+The [version 1.1.0 illustrated guide](docs/reports/windows-application-guide-1.1.0.docx) explains the actual
+installed application with two real screenshots, a worked user workflow, important
+source excerpts and observed validation. Read the [dated delivery report](docs/reports/installed-windows-2026-11-10.md)
+and [byte and page review](docs/reports/windows-application-guide-1.1.0.json) for exact scope. Historical Office
+editions remain available with their original baselines.
+
+New documentation files:
+
+- [docs/reports/windows-application-guide-1.1.0.docx](docs/reports/windows-application-guide-1.1.0.docx): Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits.
+- [docs/reports/windows-application-guide-1.1.0.json](docs/reports/windows-application-guide-1.1.0.json): Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results.
+- [docs/screenshots/installed-1.1.0/destructive-change-review.png](docs/screenshots/installed-1.1.0/destructive-change-review.png): Actual installed application synthetic-profile screenshot: Destructive resource change worklist.
+- [docs/screenshots/installed-1.1.0/reasoned-resource-receipt.png](docs/screenshots/installed-1.1.0/reasoned-resource-receipt.png): Actual installed application synthetic-profile screenshot: Plan bound resource review receipt.
