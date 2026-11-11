@@ -25,3 +25,7 @@ For R resources, C selected fields and bounded masks: validation is O(R log R + 
 Consequences: runs need no credentials; missing/private evidence fails closed; development/runtime responsibilities remain small. Mocks cannot establish API authorization, backend locking, default VPC resources, completeness of architecture, runtime connectivity or durability. Revisit actual isolated-account tests, default-resource management, monitoring/retention, IAM/KMS review, complete topology/relationship checks, remote-state encryption/locking and real billing before production use.
 
 Release actions: validate contracts/properties, real Terraform/OPA cases, supply-chain/security gates, exact file/symbol maps and current main CI; publish dated evidence/limits. No production deployment/approval is implied.
+
+## Native workbench boundary
+
+`desktop_project` adapts the unchanged actual core; `desktop` owns the Tk mainloop and one captured-settings worker; `desktop_state` owns a separate OS-local SQLite bundle store and lock. The CLI/core paths remain independent. Only completed bounded outputs are saved, and history reopens exact retained bytes. [Native operations and trust limits](native-application.md) document the actual desktop boundary rather than extending it to cloud deployment or multiuser authentication.

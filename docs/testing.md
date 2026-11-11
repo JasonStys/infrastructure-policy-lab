@@ -32,3 +32,7 @@ python -m venv .venv
 Native tests need the separately bootstrapped .tools binaries; Linux/macOS Python path is .venv/bin/python. Minimum branch-inclusive core coverage 90%; warnings are errors. Symlink test skips only when OS denies creating a link; hosted Linux/macOS must execute it. Core CI covers Ubuntu Python 3.12/3.14, Windows 3.14, standard macOS 15 Intel 3.14; real Terraform/OPA also run on Linux. Local Windows exercises the actual vendor binaries too.
 
 Measured outcomes and exact source/run links belong in [validation](reports/validation.md), not invented forecasts. Mock tests don't validate live AWS, all infrastructure types, full topology, IAM/backend semantics, disaster recovery, penetration resistance or a complete compliance baseline. Test code/input reports are synthetic and only logs/summaries are retained by CI. No test relaxations or advisory suppressions are permitted merely to make CI pass.
+
+## Actual native application
+
+New state/controller tests retain real SQLite and core execution, with OS presentation alone adapted for unit tests. Independent domain oracles cover normal and mistaken workflows. A separate Windows job builds the actual Python3.14.10/Tk portable EXE and drives real widgets/mainloop, exact export and process restart with marked synthetic profiles. Existing coverage/security/tool gates are retained; no artifact/cache uploads were added. [Native evidence](reports/native-application-2026-11-10.md) distinguishes measured local results from pending hosted checks, signing and real-user migration.
