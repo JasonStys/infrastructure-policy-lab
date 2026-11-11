@@ -72,6 +72,14 @@ See [test strategy](docs/testing.md), [measured validation](docs/reports/validat
 
 GitHub Actions keep results in logs and job summaries only: **no retained artifact/cache uploads**. No AWS deployment, credentials, paid cloud resources, host settings changes or automatic teardown is included. Human authorization and isolated account/state management are prerequisites before any real deployment. [Security reporting](SECURITY.md).
 
+## Native profile storage correction
+
+Version 1.1.1 rejects pre-existing linked/nonregular fixed profile and SQLite
+sidecar entries before initialization can write through an alias. Ordinary
+recovery files and existing profile schemas remain supported; no data is reset.
+See the [confirmed fixture, recovery tests and scope](docs/reports/profile-admission-2026-11-11.md).
+Earlier native releases and documentation retain their own dated evidence.
+
 ## File guide
 
 <!-- BEGIN FILE GUIDE -->
@@ -114,6 +122,7 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [docs/reports/installed-windows-2026-11-10.md](docs/reports/installed-windows-2026-11-10.md) | Installed Windows application validation 10 November 2026. |
 | [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native application validation — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/profile-admission-2026-11-11.md](docs/reports/profile-admission-2026-11-11.md) | Fixed profile entry admission — November 11, 2026. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide with source revision and dated validation scope. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact reviewed Office file identities, immutable source baseline and workflow observations. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
@@ -166,6 +175,7 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Documentation map and offline tool archive integrity regression tests. Created by Jason Stys. |
 | [tests/test\_plan.py](tests/test_plan.py) | Strict plan input, sensitive masks, bounds and malformed-data negative tests. Created by Jason Stys. |
 | [tests/test\_policy.py](tests/test_policy.py) | Independent gate decisions, unknown propagation, KMS/TLS scope and property oracles. Jason Stys. |
+| [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_reader\_races.py](tests/test_reader_races.py) | Actual opened-device and POSIX regular-to-FIFO replacement regressions for bounded readers. Jason Stys. |
 | [tests/test\_review.py](tests/test_review.py) | Independent change-shape, stale-review, redaction and user workflow tests. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Terraform/OPA/scanner URLs, versions and SHA-256 pins. |
