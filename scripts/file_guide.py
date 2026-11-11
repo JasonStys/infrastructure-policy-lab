@@ -4,22 +4,22 @@
 # variable: BEGIN — line 33
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 58
-# parameter: path — line 58
-# variable: content — line 68
-# variable: line — line 74
-# definition: main — line 78
-# variable: parser — line 80
-# variable: args — line 82
-# variable: files — line 83
-# variable: rows — line 91
-# variable: path — line 92
-# variable: label — line 93
-# variable: destination — line 95
-# variable: original — line 96
-# variable: first — line 97
-# variable: last — line 97
-# variable: expected — line 98
+# definition: description — line 60
+# parameter: path — line 60
+# variable: content — line 70
+# variable: line — line 76
+# definition: main — line 80
+# variable: parser — line 82
+# variable: args — line 84
+# variable: files — line 85
+# variable: rows — line 93
+# variable: path — line 94
+# variable: label — line 95
+# variable: destination — line 97
+# variable: original — line 98
+# variable: first — line 99
+# variable: last — line 99
+# variable: expected — line 100
 # END CODE MAP
 
 from __future__ import annotations
@@ -32,6 +32,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/windows-application-guide-1.1.1.docx": "Reviewed current 1.1.1 installed-app guide: actual screenshots, workflow, immutable code and measured limits.",
+    "docs/reports/windows-application-guide-1.1.1.json": "Current Word, screenshot, source and individually reviewed rendered-page hashes.",
     "docs/reports/windows-application-guide-1.1.0.docx": "Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits.",
     "docs/reports/windows-application-guide-1.1.0.json": "Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results.",
     "docs/screenshots/installed-1.1.0/destructive-change-review.png": "Actual installed application synthetic-profile screenshot: Destructive resource change worklist.",

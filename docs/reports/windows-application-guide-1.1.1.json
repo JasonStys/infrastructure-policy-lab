@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "repository": "infrastructure-policy-lab",
+  "runtimeVersion": "1.1.1",
+  "runtimeSource": "9993424892243203dfc8e2ce88390e5000b35551",
+  "createdAt": "2026-11-11T09:41:43.554Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.1.docx",
+  "sha256": "f923c35a460d8d3b6c9c7b0822597443489b4c57dbc4da3c2ade71542f980276",
+  "screenshots": [
+    {
+      "file": "destructive-change-review.png",
+      "sha256": "5cfd725c5e839aab66409e94acc2dc98d4341607322dbf41f231af2360e1ad95",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed app selects an aws_vpc.sample delete-before-create replacement and shows its original REVIEW evidence. The selected-control gate remains BLOCKED with 16 PASS and 1 REVIEW."
+    },
+    {
+      "file": "reasoned-resource-receipt.png",
+      "sha256": "c71ca949282eb3bea94b056a88c63134bb73edfeb541d39c7edce7192ba3443b",
+      "width": 1276,
+      "height": 899,
+      "caption": "The actual installed review retains a reasoned resource disposition bound to the current semantic plan and worklist. The annotation does not turn the blocked policy result into approval."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "assurance/desktop_state.py",
+      "first": 208,
+      "last": 219,
+      "sha256": "86b27d4f873982a95a2b8f6de3bfd332da84b40550e52ac9b78675fe3b5daa41",
+      "url": "https://github.com/JasonStys/infrastructure-policy-lab/blob/9993424892243203dfc8e2ce88390e5000b35551/assurance/desktop_state.py#L208"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Actual installed workflows",
+      "observed": "Full original domain, review and export controls passed two normal native launches; all 4 saved bundles retained exact original bytes.",
+      "result": "Passed"
+    },
+    {
+      "name": "Old-to-new profile",
+      "observed": "The actual installed 1.1.0 app created a synthetic profile; installed 1.1.1 reopened it and retained all 4 exact bundles without reset.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and distribution",
+      "observed": "Exact-main workflows and processed CodeQL passed with zero open main alerts. Five downloaded assets and installed files matched their verified SHA-256 identities.",
+      "result": "Verified"
+    },
+    {
+      "name": "PC and links",
+      "observed": "Existing links were backed up and retargeted with settings retained. Normal profiles and Docker were unchanged; default-profile shortcut activation remains separately untested.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": {
+    "approved": true,
+    "ooxmlSchema": "passed",
+    "pages": [
+      {
+        "page": 1,
+        "sha256": "0aa24c10f8bdd88d64bd3f1f97192bd514f26681ee89a4cebb1a7ad0cd8776ad",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 2,
+        "sha256": "9209d82be4c5d21d18a569f6ec9c4551dae9e975ed69b8e5b4f996c6cd988303",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 3,
+        "sha256": "6e248c908a89eb0e298987d77ed2054e2b4824e51c8d4ee2efd01d2771fed2f8",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 4,
+        "sha256": "3e8170a550a982398df2744ee2c986d346ae73d461b832cf6aed853030a2540a",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      }
+    ],
+    "checkedUtc": "2026-11-11T10:22:51.233267+00:00",
+    "method": "All final page content individually inspected by root or named peers; only exact pixel identity carries prior individual inspection."
+  }
+}
