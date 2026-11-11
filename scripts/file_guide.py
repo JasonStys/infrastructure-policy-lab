@@ -4,22 +4,22 @@
 # variable: BEGIN — line 33
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 51
-# parameter: path — line 51
-# variable: content — line 61
-# variable: line — line 67
-# definition: main — line 71
-# variable: parser — line 73
-# variable: args — line 75
-# variable: files — line 76
-# variable: rows — line 84
-# variable: path — line 85
-# variable: label — line 86
-# variable: destination — line 88
-# variable: original — line 89
-# variable: first — line 90
-# variable: last — line 90
-# variable: expected — line 91
+# definition: description — line 54
+# parameter: path — line 54
+# variable: content — line 64
+# variable: line — line 70
+# definition: main — line 74
+# variable: parser — line 76
+# variable: args — line 78
+# variable: files — line 79
+# variable: rows — line 87
+# variable: path — line 88
+# variable: label — line 89
+# variable: destination — line 91
+# variable: original — line 92
+# variable: first — line 93
+# variable: last — line 93
+# variable: expected — line 94
 # END CODE MAP
 
 from __future__ import annotations
@@ -32,6 +32,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "requirements-native.lock": "Exact SHA256-locked native-build tools; runtime dependencies remain separately reviewed.",
+    "docs/licenses/tcl-9.0.4.txt": "Verbatim reference SDK Tcl9.0.4 license; builds independently collect actual embedded runtime notices.",
+    "docs/licenses/tk-9.0.4.txt": "Verbatim reference SDK Tk9.0.4 license; builds independently collect actual embedded runtime notices.",
     "docs/reports/project-guide.docx": "Reviewed Word project guide with source revision and dated validation scope.",
     "docs/reports/publications.json": "Exact reviewed Office file identities, immutable source baseline and workflow observations.",
     ".gitattributes": "Portable LF text handling.",

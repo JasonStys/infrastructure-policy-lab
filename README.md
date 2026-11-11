@@ -7,6 +7,10 @@ Credential-free infrastructure-as-code testing and offline change assurance. Cre
 
 This defensive DevOps/cloud-security portfolio project asks **what a proposed infrastructure change proves, what it cannot prove, and which changes need review**. It is an authored educational lab, not cloud deployment authorization, a full vulnerability/compliance scanner or a security certification.
 
+## Native graphical application
+
+A genuine one-file Windows workbench now exposes the existing analysis core through supported file selectors, relevant settings, literal findings/detail, durable private history and exact bundle exports. Prepared scenarios are optional inputs within this same application. End users need no Python/Node installation. See [native workflows, profile safety and package acceptance](docs/native-application.md); public download/desktop installation remains a separate reviewed step.
+
 ## Features
 
 - Real Terraform configuration for an isolated AWS VPC, two private subnets, a sealed deny-all security group and versioned/private S3 evidence storage using a rotating KMS key, ownership enforcement and HTTP deny policy. No workloads, NAT or internet gateway are provisioned by the example.
@@ -85,6 +89,10 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [assurance/\_\_main\_\_.py](assurance/__main__.py) | Module CLI entry point; does not invoke Terraform, AWS or a shell. Jason Stys. |
 | [assurance/cli.py](assurance/cli.py) | Read-only assess/compare/cost command-line workflows; no deployment or arbitrary shell. Jason Stys. |
 | [assurance/cost.py](assurance/cost.py) | Exact-decimal scenario cost calculation with explicit exclusions; no pricing API or AWS calls. Jason Stys. |
+| [assurance/desktop.py](assurance/desktop.py) | Native offline workbench: real project inputs, analysis, searchable evidence, history and export. Jason Stys. |
+| [assurance/desktop\_io.py](assurance/desktop_io.py) | Bounded regular descriptor reads and strict finite JSON for owner-local desktop state. Jason Stys. |
+| [assurance/desktop\_project.py](assurance/desktop_project.py) | Native selected-control, plan-comparison, exact-cost and digest-bound resource-review workflows. Jason Stys. |
+| [assurance/desktop\_state.py](assurance/desktop_state.py) | Owner-local desktop profile, bounded durable bundles and non-overwriting export. Jason Stys. |
 | [assurance/io.py](assurance/io.py) | Bounded strict JSON reads and new-directory-only evidence writes. Created by Jason Stys. |
 | [assurance/plan.py](assurance/plan.py) | Validate Terraform plan changes and retain only selected non-sensitive evidence. Jason Stys. |
 | [assurance/policy.py](assurance/policy.py) | Deterministic selected-control plan gate; unknown/deletion/unsupported resources cannot pass. Jason Stys. |
@@ -95,11 +103,15 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [docs/contracts.md](docs/contracts.md) | Plan, policy, cost and report contracts. |
 | [docs/development.md](docs/development.md) | Coding, documentation and dependency maintenance. |
 | [docs/handbook.md](docs/handbook.md) | Infrastructure Policy Lab handbook. |
+| [docs/licenses/tcl-9.0.4.txt](docs/licenses/tcl-9.0.4.txt) | Verbatim reference SDK Tcl9.0.4 license; builds independently collect actual embedded runtime notices. |
+| [docs/licenses/tk-9.0.4.txt](docs/licenses/tk-9.0.4.txt) | Verbatim reference SDK Tk9.0.4 license; builds independently collect actual embedded runtime notices. |
+| [docs/native-application.md](docs/native-application.md) | Infrastructure Policy Workbench native application. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured offline gate throughput with environment/scope caveats. |
 | [docs/reports/change-review-2026-11-09.md](docs/reports/change-review-2026-11-09.md) | Change review workflow validation — 2026-11-09. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Inert synthetic plan report, never real cloud evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Synthetic selected-control assessment, counts and semantic digest. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native application validation — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide with source revision and dated validation scope. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact reviewed Office file identities, immutable source baseline and workflow observations. |
@@ -126,21 +138,30 @@ GitHub Actions keep results in logs and job summaries only: **no retained artifa
 | [pyproject.toml](pyproject.toml) | Dependency-free runtime metadata, strict type/lint/test coverage settings. |
 | [requirements-dev.in](requirements-dev.in) | Reviewed direct validation dependencies. |
 | [requirements-dev.lock](requirements-dev.lock) | Complete hash-locked cross-platform validation graph. |
+| [requirements-native.lock](requirements-native.lock) | Exact SHA256-locked native-build tools; runtime dependencies remain separately reviewed. |
 | [scripts/\_\_init\_\_.py](scripts/__init__.py) | Repository-owned reproducibility and validation utilities. Created by Jason Stys. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Measure bounded in-memory plan-policy cost, not Terraform/AWS latency. Created by Jason Stys. |
 | [scripts/bootstrap.py](scripts/bootstrap.py) | Install hash-verified official Terraform/OPA into this repo only, never globally. Jason Stys. |
+| [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
 | [scripts/code\_map.py](scripts/code_map.py) | Generate/check exact Python, Terraform, Rego, shell and workflow symbol positions. Created by Jason Stys. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Maintain exhaustive tracked-file README summaries without reading ignored private plans. Jason Stys. |
 | [scripts/fixtures.py](scripts/fixtures.py) | Generate independently labeled, strictly fictional Terraform-like plans and cost scenarios. Jason Stys. |
 | [scripts/infra\_checks.py](scripts/infra_checks.py) | Real Terraform mocked plans and OPA cross-engine checks, never apply/live AWS. Created by Jason Stys. |
+| [scripts/native\_acceptance.py](scripts/native_acceptance.py) | Exercise the same real frozen Tk controls/core on an explicit synthetic profile; no arbitrary scripts. Jason Stys. |
+| [scripts/native\_entry.py](scripts/native_entry.py) | Launch the actual bundled offline project workbench; no setup shell commands. Jason Stys. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
+| [scripts/test\_native\_app.py](scripts/test_native_app.py) | Run the real frozen workbench twice with an owned synthetic profile and exact bundle persistence. Jason Stys. |
 | [scripts/validate.sh](scripts/validate.sh) | Jason Stys: portable fail-fast quality, contracts, negative/property tests and measured policy throughput. |
 | [tests/conftest.py](tests/conftest.py) | Reusable isolated synthetic plan fixtures; no real AWS credentials/state. Created by Jason Stys. |
 | [tests/test\_cli\_report.py](tests/test_cli_report.py) | End-to-end command exits, report escaping/no-overwrite, cost and comparison flows. Jason Stys. |
+| [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
+| [tests/test\_desktop\_project.py](tests/test_desktop_project.py) | Independent graphical plan/cost/worklist oracles, stale receipts and cumulative actual review. Jason Stys. |
+| [tests/test\_desktop\_state.py](tests/test_desktop_state.py) | Independent offline desktop ownership, byte-bound, SQLite and non-overwrite regressions. Jason Stys. |
 | [tests/test\_io\_cost.py](tests/test_io_cost.py) | Strict JSON filesystem boundaries and exact-decimal cost oracles. Created by Jason Stys. |
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Documentation map and offline tool archive integrity regression tests. Created by Jason Stys. |
 | [tests/test\_plan.py](tests/test_plan.py) | Strict plan input, sensitive masks, bounds and malformed-data negative tests. Created by Jason Stys. |
 | [tests/test\_policy.py](tests/test_policy.py) | Independent gate decisions, unknown propagation, KMS/TLS scope and property oracles. Jason Stys. |
+| [tests/test\_reader\_races.py](tests/test_reader_races.py) | Actual opened-device and POSIX regular-to-FIFO replacement regressions for bounded readers. Jason Stys. |
 | [tests/test\_review.py](tests/test_review.py) | Independent change-shape, stale-review, redaction and user workflow tests. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Terraform/OPA/scanner URLs, versions and SHA-256 pins. |
 

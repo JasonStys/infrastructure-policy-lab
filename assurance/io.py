@@ -22,13 +22,13 @@
 # parameter: path — line 92
 # variable: info — line 94
 # variable: descriptor — line 102
-# variable: stream — line 103
-# variable: source — line 104
-# definition: canonical — line 110
-# parameter: value — line 110
-# definition: new_directory — line 117
-# parameter: path — line 117
-# variable: parent — line 119
+# variable: stream — line 105
+# variable: source — line 108
+# definition: canonical — line 114
+# parameter: value — line 114
+# definition: new_directory — line 121
+# parameter: path — line 121
+# variable: parent — line 123
 # END CODE MAP
 
 from __future__ import annotations
@@ -99,8 +99,12 @@ def read(path: Path) -> Any:
         or info.st_size > MAX_BYTES
     ):
         raise ValueError("input must be a bounded regular non-linked file")
-    descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+    descriptor = os.open(
+        path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    )
     with os.fdopen(descriptor, "rb") as stream:
+        if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+            raise ValueError("input changed to a non-regular opened descriptor")
         source = stream.read(MAX_BYTES + 1)
     if len(source) > MAX_BYTES:
         raise ValueError("input size limit exceeded")

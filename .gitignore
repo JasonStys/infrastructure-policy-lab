@@ -16,3 +16,6 @@ crash.log
 *.pem
 *.key
 .env*
+
+release/
+*.spec
